@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
+import androidx.core.widget.addTextChangedListener
 
 class MainActivity : AppCompatActivity(){
 
@@ -29,18 +30,36 @@ class MainActivity : AppCompatActivity(){
         val etNumber1 = findViewById<EditText>(R.id.etNumero1)
         val tvResultado = findViewById<TextView>(R.id.tvResultado)
 
+        btnCalcular.isEnabled = false
+
+        etNumber0.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun afterTextChanged(s: Editable) {
+                btnCalcular.isEnabled = s.toString().isNotEmpty()
+            }
+        })
+        etNumber1.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun afterTextChanged(s: Editable) {
+                btnCalcular.isEnabled = s.toString().isNotEmpty()
+            }
+        })
 
         btnCalcular.setOnClickListener {
-
-            val number0 = etNumber0.text.toString().toInt()
-            val number1 = etNumber1.text.toString().toInt()
-            when(spnOperacion.selectedItemPosition) {
-                0 -> tvResultado.setText("${number0 + number1}")
-                1 -> tvResultado.setText("${number0 - number1}")
-                2 -> tvResultado.setText("${number0 * number1}")
-                3 -> tvResultado.setText("${number0 / number1}")
+            if (etNumber0.text != null && etNumber1.text != null) {
+                val number0 = etNumber0.text.toString().toInt()
+                val number1 = etNumber1.text.toString().toInt()
+                when (spnOperacion.selectedItemPosition) {
+                    0 -> tvResultado.setText("${number0 + number1}")
+                    1 -> tvResultado.setText("${number0 - number1}")
+                    2 -> tvResultado.setText("${number0 * number1}")
+                    3 -> tvResultado.setText("${number0 / number1}")
+                }
             }
         }
-
     }
 }
