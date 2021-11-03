@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.*
 import androidx.core.widget.addTextChangedListener
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity(){
         val spnOperacion = findViewById<Spinner>(R.id.spnOperacion)
 
         val adaptador = ArrayAdapter.createFromResource(
-            this, R.array.listaOperaciones, android.R.layout.simple_spinner_item)
+            this, R.array.listaOperaciones, android.R.layout.simple_spinner_item
+        )
 
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
