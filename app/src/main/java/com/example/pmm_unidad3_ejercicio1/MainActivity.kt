@@ -8,9 +8,8 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         val spnOperacion = findViewById<Spinner>(R.id.spnOperacion)
 
         val adaptador = ArrayAdapter.createFromResource(
-            this, R.array.listaOperaciones, android.R.layout.simple_spinner_item
-        )
+            this, R.array.listaOperaciones, android.R.layout.simple_spinner_item)
 
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
@@ -36,12 +34,13 @@ class MainActivity : AppCompatActivity() {
 
             val number0 = etNumber0.text.toString().toInt()
             val number1 = etNumber1.text.toString().toInt()
-            when (spnOperacion.selectedItemPosition) {
+            when(spnOperacion.selectedItemPosition) {
                 0 -> tvResultado.setText("${number0 + number1}")
                 1 -> tvResultado.setText("${number0 - number1}")
                 2 -> tvResultado.setText("${number0 * number1}")
                 3 -> tvResultado.setText("${number0 / number1}")
             }
         }
+
     }
 }
