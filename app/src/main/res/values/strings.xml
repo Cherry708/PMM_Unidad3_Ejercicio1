@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PMM_Unidad3_Ejercicio1</string>
+
+    <string-array name = "listaOperaciones">
+        <item>Suma</item>
+        <item>Resta</item>
+        <item>Multiplicacion</item>
+        <item>Division</item>
+    </string-array>
+</resources>
